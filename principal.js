@@ -29,7 +29,7 @@ function generateTable() {
 	const cabecalho = ["Nome", "Espécie", "País", "NúmeroDeExemplaresVivos"]
 	for (let i = 0; i < 4; i++) {
 
-		const cell = document.createElement("td");
+		const cell = document.createElement("th");
 		cell.textContent = cabecalho[i];
 		tbHead.appendChild(cell);
 	}
@@ -76,15 +76,34 @@ function generateTable() {
 	SumQtd();
 
 	document.querySelector("table").style.border = "solid 1px black";
+	document.querySelector("table").style.padding = "10px";
 	const celulas = document.querySelectorAll("td");
 	for(let i = 0; i < celulas.length; i++){
 		celulas[i].style.border = "solid 1px black";
+		celulas[i].style.padding = "10px";
 	}
 
 	const celCabecalho = document.querySelectorAll("th");
 	for(let i = 0; i < celCabecalho.length; i++){
-		celCabecalho[i].style.backgroundColor = red;
+		celCabecalho[i].style.backgroundColor = "lightGray";
+		celCabecalho[i].style.border = "solid 1px black";
+		celCabecalho[i].style.padding = "10px";
 	}
+
+	const footer = document.querySelector("tfoot");
+	let somatorio = footer.textContent;
+	footer.textContent = "Somatório : " + somatorio;
+	footer.style.fontWeight = "700";
+	
+	
+
+
+
+
+
+
+
+
 
 
 
