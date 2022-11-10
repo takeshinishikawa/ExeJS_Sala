@@ -7,7 +7,6 @@ const animais = [{"Nome":"Baleia Franca do Sul", "Espécie":"Eubalaena australis
 
 ]
 
-
 function generateTable() {
 	// creates a <table> element and a <tbody> element
 	const tbl = document.createElement("table");
@@ -27,15 +26,19 @@ function generateTable() {
 		let row = document.createElement("tr");
 		let cell = document.createElement("td");
 		cell.textContent = animais[j].Nome;
+		cell.classList.add("nome");
 		row.appendChild(cell);
 		cell = document.createElement("td");
 		cell.textContent = animais[j].Espécie;
+		cell.classList.add("especie");
 		row.appendChild(cell);
 		cell = document.createElement("td");
 		cell.textContent = animais[j].País;
+		cell.classList.add("país");
 		row.appendChild(cell);
 		cell = document.createElement("td");
 		cell.textContent = animais[j]["Número de exemplares vivos"];
+		cell.classList.add("quantidade");
 		row.appendChild(cell);
 		tblBody.appendChild(row);
 		tbl.appendChild(tblBody);
@@ -63,9 +66,11 @@ function generateTable() {
 
 	}*/
 
-	tblFooter.textContent = '10001';
-	tbl.appendChild(tblFooter);
+    
 
+	tblFooter.textContent = '0';
+	tbl.appendChild(tblFooter);
+	
 	body.appendChild(tbl);
 	/*// creating all cells
 	for (let i = 0; i < 2; i++) {
@@ -98,3 +103,17 @@ function generateTable() {
 
   }
   generateTable()
+
+  document.querySelector("table").style.border = "solid 1px black"
+
+  function SumQtd() {
+		const lista = document.querySelectorAll(".quantidade");
+		let valor = parseInt(document.querySelector("tfoot").textContent);
+		for (let i=0 ; i < lista.length ; i++){
+		valor += parseInt(lista[i].textContent);
+		}
+		let sum = document.querySelector("tfoot");
+		sum.textContent = valor;
+	}
+
+	SumQtd();
