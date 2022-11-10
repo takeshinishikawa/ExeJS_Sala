@@ -1,10 +1,24 @@
 const body = document.querySelector("body");
-const animais = [{"Nome":"Baleia Franca do Sul", "Espécie":"Eubalaena australis",
- "País": "Brasil, Uruguai e Argentina", "Número de exemplares vivos": "13611"},
+const animais = [{"Nome":"Baleia Franca do Sul", "Espécie":"E. australis",
+ "País": "Brasil, Uruguai e Argentina", "NúmeroDeExemplaresVivos": "13611"},
  {"Nome":"Ararajuba", "Espécie":"G. guarouba",
- "País": "Brasil, Uruguai e Argentina", "Número de exemplares vivos": "10001"}
-
-
+ "País": "Brasil, Uruguai e Argentina", "NúmeroDeExemplaresVivos": "10001"},
+{"Nome":"Ariranha", "Espécie":"P. brasiliensis",
+ "País": "Brasil", "NúmeroDeExemplaresVivos": "1100"},
+{"Nome":"Gato-maracajá", "Espécie":"L. wiedii",
+ "País": "América Central, Brasil, Paraguai", "NúmeroDeExemplaresVivos": "4700"},
+{"Nome":"Mico-leão-dourado", "Espécie":"L. rosalia",
+ "País": "Brasil", "NúmeroDeExemplaresVivos": "3200"},
+{"Nome":"Arara-azul", "Espécie":"A. hyacinthinus",
+ "País": "Brasil", "NúmeroDeExemplaresVivos": "200"},
+{"Nome":"Boto-cor-de-rosa", "Espécie":" I. geoffrensis",
+ "País": "Bolívia, Brasil, Peru", "NúmeroDeExemplaresVivos": "484"},
+{"Nome":"Elefante-africano", "Espécie":" Loxodonta",
+ "País": "Países da África Subsaariana", "NúmeroDeExemplaresVivos": "415000"},
+{"Nome":"Jacutinga", "Espécie":" A. jacutinga",
+ "País": "Brasil, Paraguai", "NúmeroDeExemplaresVivos": "2000"}, 
+{"Nome":"Lobo-guará", "Espécie":" C. brachyurus",
+ "País": "Brasil, Argentina,Bolívia", "NúmeroDeExemplaresVivos": "24000"}, 
 ]
 
 function generateTable() {
@@ -12,7 +26,7 @@ function generateTable() {
 	const tbl = document.createElement("table");
 	const tbHead = document.createElement("thead");
 
-	const cabecalho = ["Nome", "Espécie", "País", "Número de exemplares vivos"]
+	const cabecalho = ["Nome", "Espécie", "País", "NúmeroDeExemplaresVivos"]
 	const collumn = document.createElement("th");
 	for (let i = 0; i < 4; i++) {
 
@@ -23,91 +37,35 @@ function generateTable() {
 	tbl.appendChild(tbHead);
 	const tblBody = document.createElement("tbody")
 	for(let j = 0; j < animais.length; j++) {
+		let animal = animais[j];
+		console.log(animal);
 		let row = document.createElement("tr");
-		let cell = document.createElement("td");
-		cell.textContent = animais[j].Nome;
-		cell.classList.add("nome");
+		for(let k = 0; k< cabecalho.length; k++){
+			let cell = document.createElement("td");
+			let conteudo = animal[cabecalho[k].trim()];
+			cell.textContent = `${conteudo}`;
+		cell.classList.add(cabecalho[k].trim());
 		row.appendChild(cell);
-		cell = document.createElement("td");
-		cell.textContent = animais[j].Espécie;
-		cell.classList.add("especie");
-		row.appendChild(cell);
-		cell = document.createElement("td");
-		cell.textContent = animais[j].País;
-		cell.classList.add("país");
-		row.appendChild(cell);
-		cell = document.createElement("td");
-		cell.textContent = animais[j]["Número de exemplares vivos"];
-		cell.classList.add("quantidade");
-		row.appendChild(cell);
+		}
+		
 		tblBody.appendChild(row);
 		tbl.appendChild(tblBody);
 	}
 
-	/*const tblBody = document.createElement("tbody");
-	let cell = document.createElement("td");
-	cell.textContent = 'Ararajuba';
-	tblBody.appendChild(cell);
-	cell = document.createElement("td");
-	cell.textContent = 'G. guarouba';
-	tblBody.appendChild(cell);
-	cell = document.createElement("td");
-	cell.textContent = 'Brasil';
-	tblBody.appendChild(cell);
-	cell = document.createElement("td");
-	cell.textContent = '10001';
-	tblBody.appendChild(cell);
-	tbl.appendChild(tblBody);*/
-
-
 	const tblFooter = document.createElement("tfoot");
-
-	/*function SomaQtd() {
-
-	}*/
-
-    
 
 	tblFooter.textContent = '0';
 	tbl.appendChild(tblFooter);
 	
 	body.appendChild(tbl);
-	/*// creating all cells
-	for (let i = 0; i < 2; i++) {
-	  // creates a table row
-	  const row = document.createElement("tr");
-	  const cell = document.createElement("td");
-	  const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-
-	  for (let j = 0; j < 4; j++) {
-		// Create a <td> element and a text node, make the text
-		// node the contents of the <td>, and put the <td> at
-		// the end of the table row
-		const cell = document.createElement("td");
-		const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-		cell.appendChild(cellText);
-		row.appendChild(cell);
-	  }
-
-	  // add the row to the end of the table body
-	  tblBody.appendChild(row);
-	}
-
-	// put the <tbody> in the <table>
-	tbl.appendChild(tblBody);
-	// appends <table> into <body>
-	document.body.appendChild(tbl);
-	// sets the border attribute of tbl to '2'
-	tbl.setAttribute("border", "2");*/
-
-
+	
   }
   generateTable()
 
   document.querySelector("table").style.border = "solid 1px black"
 
   function SumQtd() {
-		const lista = document.querySelectorAll(".quantidade");
+		const lista = document.querySelectorAll(".NúmeroDeExemplaresVivos");
 		let valor = parseInt(document.querySelector("tfoot").textContent);
 		for (let i=0 ; i < lista.length ; i++){
 		valor += parseInt(lista[i].textContent);
