@@ -27,7 +27,6 @@ function generateTable() {
 	const tbHead = document.createElement("thead");
 
 	const cabecalho = ["Nome", "Espécie", "País", "NúmeroDeExemplaresVivos"]
-	const collumn = document.createElement("th");
 	for (let i = 0; i < 4; i++) {
 
 		const cell = document.createElement("td");
@@ -62,7 +61,7 @@ function generateTable() {
   }
   generateTable()
 
-  document.querySelector("table").style.border = "solid 1px black"
+  
 
   function SumQtd() {
 		const lista = document.querySelectorAll(".NúmeroDeExemplaresVivos");
@@ -75,3 +74,20 @@ function generateTable() {
 	}
 
 	SumQtd();
+
+	document.querySelector("table").style.border = "solid 1px black";
+	const celulas = document.querySelectorAll("td");
+	for(let i = 0; i < celulas.length; i++){
+		celulas[i].style.border = "solid 1px black";
+	}
+
+	const celCabecalho = document.querySelectorAll("th");
+	for(let i = 0; i < celCabecalho.length; i++){
+		celCabecalho[i].style.backgroundColor = red;
+	}
+
+
+
+
+
+
