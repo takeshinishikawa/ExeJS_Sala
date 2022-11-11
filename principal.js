@@ -94,7 +94,10 @@ function generateTable() {
 	let somatorio = footer.textContent;
 	footer.textContent = "Somatório : " + somatorio;
 	footer.style.fontWeight = "700";
-	
+
+document.querySelector('tfoot').style.position = 'absolute';
+document.querySelector('tfoot').style.left = '27%';
+document.querySelector('table').style.paddingBottom = '15px';	
 	
 
 
